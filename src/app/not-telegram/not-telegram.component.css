@@ -26,9 +26,10 @@
     display: block;
     width: 144px;
     height: 144px;
-    margin: -8px auto;
+    /* margin: -8px auto; */
+    margin: 0.5rem auto;
     animation: 500ms steps(30) both;
     animation-delay: 1s;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}

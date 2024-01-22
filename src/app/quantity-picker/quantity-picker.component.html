@@ -1,5 +1,6 @@
-<form class="max-w-xs mx-auto">
-    <label for="{{QuantityId}}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{choice.Name}}:</label>
+<div class="grid grid-cols-3 gap-2 py-2.5">
+    <label for="{{QuantityId}}"
+        class="col-span-2 mb-2 text-sm">{{choice.Name}}:</label>
     <div class="relative flex items-center max-w-[8rem]">
         <button type="button" id="decrement-button" [attr.data-input-counter-decrement]=QuantityId (click)="Decrement()"
             class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
@@ -22,6 +23,4 @@
             </svg>
         </button>
     </div>
-    <!-- <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">Please select a 5 digit number
-        from 0 to 9.</p> -->
-</form>
+</div>

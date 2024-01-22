@@ -1,0 +1,7 @@
+.main_logo {
+    display: block;
+    width: 144px;
+    height: 144px;
+    /* margin: -8px auto; */
+    margin: 0.5rem auto;
+}
