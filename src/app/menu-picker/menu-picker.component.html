@@ -1,0 +1,7 @@
+<div *ngFor="let section of this.Choices | keyvalue">
+    <h1>{{section.key}}</h1>
+    <app-quantity-picker *ngFor="let choice of section.value" [choice]="choice" ></app-quantity-picker>
+</div>
+<button type="button"
+class="m-6 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-lg px-5 py-2.5 text-center me-2 mb-2 justify-self-center"
+(click)="Order()">Confirm choices</button>

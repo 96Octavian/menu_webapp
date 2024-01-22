@@ -1,0 +1,34 @@
+.tl_main_logo.play {
+    animation-name: t-logo-play;
+}
+
+@-webkit-keyframes t-logo-play {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 100% 0%;
+    }
+}
+
+@keyframes t-logo-play {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 100% 0%;
+    }
+}
+
+.tl_main_logo {
+    display: block;
+    width: 144px;
+    height: 144px;
+    margin: -8px auto;
+    animation: 500ms steps(30) both;
+    animation-delay: 1s;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

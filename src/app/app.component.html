@@ -1,0 +1,11 @@
+<div
+    class="box-border p-6 m-6 bg-slate-100 border border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 animate-flip-down animate-once animate-duration-[250ms] animate-ease-linear flex items-center justify-center h-screen">
+    <app-not-telegram *ngIf="!IsTelegram"></app-not-telegram>
+    <div *ngIf="IsTelegram">
+        <app-loading-fulscreen *ngIf="Loading"></app-loading-fulscreen>
+        <div *ngIf="!Loading">
+            <app-code-not-found *ngIf="!ValidCode"></app-code-not-found>
+            <app-menu-picker *ngIf="ValidCode" [menu]="Menu" [code]="Code"></app-menu-picker>
+        </div>
+    </div>
+</div>
