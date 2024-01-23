@@ -47,6 +47,8 @@ export class MenuPickerComponent implements OnInit {
   }
 
   Order(): void{
-    window.Telegram.WebApp.sendData({'code': this.code, 'choices': this.choices})
+    const data = {'code': this.code, 'choices': this.choices}
+    window.Telegram.WebApp.sendData(JSON.stringify(data))
+    window.Telegram.WebApp.close()
   }
 }
