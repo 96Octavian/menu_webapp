@@ -48,7 +48,7 @@ export class MenuPickerComponent implements OnInit {
     for (let section in this.menu) {
       this.choices[section] = this.menu[section].map(meal => new Choice(meal))
     }
-    window.Telegram.WebApp.MainButton.setText('Choose Color').show().onClick(this.Order());
+    window.Telegram.WebApp.MainButton.setText('Choose Color').show().onClick(this.Order);
     console.log(this.choices)
   }
 

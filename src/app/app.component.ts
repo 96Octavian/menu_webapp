@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     return this.menu
   }
 
-  public IsTelegram: boolean = (window.Telegram.WebApp.initData.length > 0)
+  public IsTelegram: boolean = window.Telegram.WebApp.initData.length > 0
 
   public Loading: boolean = false
 
