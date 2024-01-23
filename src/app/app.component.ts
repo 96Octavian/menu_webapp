@@ -24,23 +24,23 @@ export class AppComponent implements OnInit {
 
   private apiUrl: string = "https://getpantry.cloud/apiv1/pantry/17474c8e-ea5a-4857-a468-744bad4d466b/basket/"
 
-  private menu: Menu = {}
-  // private menu: Menu = {
-  //   "primi": [
-  //     "pasta con le cotiche",
-  //     "pasta senza le cotiche"
-  //   ],
-  //   "secondi": [
-  //     "pollo fritto",
-  //     "pollo lesso",
-  //     "pollo ai ferri",
-  //     "pollo al burro"
-  //   ],
-  //   "contorni": [
-  //     "patatine",
-  //     "patatine ma diverse"
-  //   ]
-  // }
+  // private menu: Menu = {}
+  private menu: Menu = {
+    "primi": [
+      "pasta con le cotiche",
+      "pasta senza le cotiche"
+    ],
+    "secondi": [
+      "pollo fritto",
+      "pollo lesso",
+      "pollo ai ferri",
+      "pollo al burro"
+    ],
+    "contorni": [
+      "patatine",
+      "patatine ma diverse"
+    ]
+  }
   public get Menu(): Menu {
     return this.menu
   }
