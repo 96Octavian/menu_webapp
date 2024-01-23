@@ -44,9 +44,11 @@ export class MenuPickerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.Telegram.WebApp.ready()
     for (let section in this.menu) {
       this.choices[section] = this.menu[section].map(meal => new Choice(meal))
     }
+    window.Telegram.WebApp.MainButton.setText('Choose Color').show().onClick(this.Order());
     console.log(this.choices)
   }
 
@@ -55,6 +57,7 @@ export class MenuPickerComponent implements OnInit {
       const data = JSON.stringify({ 'code': this.code, 'choices': this.choices })
       window.Telegram.WebApp.sendData(data)
       this.sent = true
+      window.Telegram.WebApp.close()
       // window.Telegram.WebApp.showAlert(data, window.Telegram.WebApp.close())
     } catch (error) {
       window.Telegram.WebApp.showAlert("Error: " + error)
