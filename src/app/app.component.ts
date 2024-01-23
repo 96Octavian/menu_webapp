@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     return this.menu
   }
 
-  public IsTelegram: boolean = window.Telegram.WebApp.WebAppUser !== undefined
+  public IsTelegram: boolean = window.navigator.userAgent.indexOf("Telegram") !== -1
 
   public Loading: boolean = false
 
