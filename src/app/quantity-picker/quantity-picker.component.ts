@@ -10,8 +10,8 @@ export class QuantityPickerComponent {
 
   @Input() choice!: Choice;
 
-  public get QuantityId(): string {
-    return "quantity-input-" + this.choice.Name
+  public get CanDecrement(): boolean {
+    return this.choice.Amount > 0
   }
 
   public Increment(): void {

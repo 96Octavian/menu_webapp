@@ -1,26 +1,34 @@
-<div class="grid grid-cols-3 gap-2 py-2.5">
-    <label for="{{QuantityId}}"
-        class="col-span-2 mb-2 text-sm">{{choice.Name}}:</label>
-    <div class="relative flex items-center max-w-[8rem]">
-        <button type="button" id="decrement-button" [attr.data-input-counter-decrement]=QuantityId (click)="Decrement()"
-            class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-            <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 18 2">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M1 1h16" />
-            </svg>
-        </button>
-        <input type="text" id="{{QuantityId}}" data-input-counter data-input-counter-min="1" data-input-counter-max="50"
-            aria-describedby="helper-text-explanation"
-            class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="{{choice.Amount}}" value="{{choice.Amount}}" required>
-        <button type="button" id="increment-button" [attr.data-input-counter-increment]=QuantityId (click)="Increment()"
-            class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-            <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 1v16M1 9h16" />
-            </svg>
-        </button>
+<div class="bg-white border border-gray-200 rounded-lg dark:bg-slate-900 dark:border-gray-700" data-hs-input-number>
+    <div class="w-full grid grid-cols-8 items-center gap-x-3">
+        <div class="ps-2 pe-8 col-span-5">
+            <span class="block font-medium text-sm text-gray-800 dark:text-white">
+                {{choice.Name}}
+            </span>
+        </div>
+        <div
+            class="col-span-3 flex items-center -gap-y-px divide-x divide-gray-200 border-s border-gray-200 dark:divide-gray-700 dark:border-gray-700">
+            <button type="button" (click)="Decrement()" [disabled]="!CanDecrement"
+                class="w-10 h-10 inline-flex justify-center items-center gap-x-2 text-sm font-medium last:rounded-e-lg bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 px-3"
+                data-hs-input-number-decrement>
+                <svg class="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M5 12h14" />
+                </svg>
+            </button>
+            <input type="text"
+                class="bg-gray-50 border-x-0 border-gray-300 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 h-11 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                value="{{choice.Amount}}" required>
+            <button type="button" (click)="Increment()"
+                class="w-10 h-10 inline-flex justify-center items-center gap-x-2 text-sm font-medium last:rounded-e-lg bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 px-3"
+                data-hs-input-number-increment>
+                <svg class="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                </svg>
+            </button>
+        </div>
     </div>
 </div>

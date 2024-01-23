@@ -1,8 +1,11 @@
 <div *ngFor="let section of this.Choices | keyvalue" class="py-4">
-    <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white animate-flip-down animate-once animate-duration-[250ms] animate-ease-linear">
+    <div
+        class="max-w-sm rounded overflow-hidden shadow-lg bg-white animate-flip-down animate-once animate-duration-[250ms] animate-ease-linear">
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">{{section.key}}</div>
-            <app-quantity-picker *ngFor="let choice of section.value" [choice]="choice"></app-quantity-picker>
+            <div class="grid grid-cols-1 gap-2">
+                <app-quantity-picker *ngFor="let choice of section.value" [choice]="choice"></app-quantity-picker>
+            </div>
         </div>
     </div>
 </div>
