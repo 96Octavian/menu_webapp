@@ -31,8 +31,8 @@ export interface Choices {
 })
 export class MenuPickerComponent implements OnInit {
 
-  @Input() code: string = ""
-  @Input() menu: Menu = {}
+  @Input({ required: true }) code!: string
+  @Input({ required: true }) menu!: Menu
   private choices: Choices = {}
   public get Choices(): Choices {
     return this.choices
@@ -47,6 +47,6 @@ export class MenuPickerComponent implements OnInit {
   }
 
   Order(): void{
-    console.log(this.choices)
+    window.Telegram.WebApp.sendData({'code': this.code, 'choices': this.choices})
   }
 }

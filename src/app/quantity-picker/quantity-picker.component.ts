@@ -8,7 +8,7 @@ import { Choice } from '../menu-picker/menu-picker.component';
 })
 export class QuantityPickerComponent {
 
-  @Input() choice!: Choice;
+  @Input({ required: true }) choice!: Choice;
 
   public get CanDecrement(): boolean {
     return this.choice.Amount > 0
@@ -16,11 +16,11 @@ export class QuantityPickerComponent {
 
   public Increment(): void {
     this.choice.Increment()
-    console.log(this.choice.Name + ": " + this.choice.Amount)
+    // console.log(this.choice.Name + ": " + this.choice.Amount)
   }
 
   public Decrement(): void {
     this.choice.Decrement()
-    console.log(this.choice.Name + ": " + this.choice.Amount)
+    // console.log(this.choice.Name + ": " + this.choice.Amount)
   }
 }
