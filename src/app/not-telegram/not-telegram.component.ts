@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class NotTelegramComponent {
 
+  public userAgent: string = window.navigator.userAgent
+
 }
