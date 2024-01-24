@@ -66,24 +66,25 @@ export class MenuPickerComponent implements OnInit {
   }
 
   Order(): void {
-    try {
-      const data: { [key: string]: { [nestedKey: string]: number } } = {};
-      for (let section in this.Choices) {
-        data[section] = {}
-        for (let choice in this.Choices[section]) {
-          if (this.Choices[section][choice].Amount > 0) {
-            data[section][this.Choices[section][choice].Name] = this.Choices[section][choice].Amount
-          }
+    const data: { [key: string]: { [nestedKey: string]: number } } = {};
+    for (let section in this.Choices) {
+      data[section] = {}
+      for (let choice in this.Choices[section]) {
+        if (this.Choices[section][choice].Amount > 0) {
+          data[section][this.Choices[section][choice].Name] = this.Choices[section][choice].Amount
         }
       }
-      const stringData = JSON.stringify({ code: this.code, choices: data })
+    }
+    const stringData = JSON.stringify({ code: this.code, choices: data })
+
+    try {
       console.log(data)
       window.Telegram.WebApp.sendData(data)
       this.sent = true
       window.Telegram.WebApp.close()
       // window.Telegram.WebApp.showAlert(data, window.Telegram.WebApp.close())
     } catch (error) {
-      window.Telegram.WebApp.showAlert("Error: " + error)
+      window.Telegram.WebApp.showAlert(error + '\n' + stringData)
     }
 
   }
