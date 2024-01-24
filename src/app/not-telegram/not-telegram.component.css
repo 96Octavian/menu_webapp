@@ -26,6 +26,7 @@
     display: block;
     width: 144px;
     height: 144px;
+    background-image: url(src/assets/t_logo_sprite.svg);
     /* margin: -8px auto; */
     margin: 0.5rem auto;
     animation: 500ms steps(30) both;
