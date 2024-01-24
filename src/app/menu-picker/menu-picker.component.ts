@@ -47,14 +47,29 @@ export class MenuPickerComponent implements OnInit {
     for (let section in this.menu) {
       this.choices[section] = this.menu[section].map(meal => new Choice(meal))
     }
-    window.Telegram.WebApp.MainButton.setParams({'text': 'Send order', 'is_active': true, 'is_visible': true}).onClick(this.Order)
+    window.Telegram.WebApp.MainButton.setParams({ 'text': 'Send order', 'is_active': true, 'is_visible': true }).onClick(this.Order)
     window.Telegram.WebApp.ready()
+  }
+
+  PrepareData(): string {
+    const data: { [key: string]: { [nestedKey: string]: number } } = {};
+    for (let section in this.Choices) {
+      data[section] = {}
+      for (let choice in this.Choices[section]) {
+        if (this.Choices[section][choice].Amount > 0) {
+          data[section][this.Choices[section][choice].Name] = this.Choices[section][choice].Amount
+        }
+      }
+    }
+    console.log(data)
+    const stringData = JSON.stringify({ code: this.code, choices: data })
+    console.log(stringData)
+    return stringData
   }
 
   Order(): void {
     try {
-      //const data = JSON.stringify({ 'code': this.code, 'choices': this.choices })
-      window.Telegram.WebApp.sendData("Insomma ma xke non funzia")
+      window.Telegram.WebApp.sendData(this.PrepareData())
       this.sent = true
       window.Telegram.WebApp.close()
       // window.Telegram.WebApp.showAlert(data, window.Telegram.WebApp.close())
