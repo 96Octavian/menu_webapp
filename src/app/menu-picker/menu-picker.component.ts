@@ -51,7 +51,7 @@ export class MenuPickerComponent implements OnInit {
     window.Telegram.WebApp.ready()
   }
 
-  PrepareData(): string {
+  private prepareData(): string {
     const data: { [key: string]: { [nestedKey: string]: number } } = {};
     for (let section in this.Choices) {
       data[section] = {}
@@ -69,7 +69,7 @@ export class MenuPickerComponent implements OnInit {
 
   Order(): void {
     try {
-      window.Telegram.WebApp.sendData(this.PrepareData())
+      window.Telegram.WebApp.sendData(this.prepareData())
       this.sent = true
       window.Telegram.WebApp.close()
       // window.Telegram.WebApp.showAlert(data, window.Telegram.WebApp.close())
