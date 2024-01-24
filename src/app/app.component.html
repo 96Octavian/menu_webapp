@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center my-8 mx-4">
-    <app-not-telegram *ngIf="!ValidPlatform"></app-not-telegram>
+    <app-not-telegram *ngIf="!ValidPlatform" [Platform]="Platform"></app-not-telegram>
     <div *ngIf="ValidPlatform">
         <app-loading-fulscreen *ngIf="Loading"></app-loading-fulscreen>
         <div *ngIf="!Loading">
