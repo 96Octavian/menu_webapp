@@ -70,8 +70,16 @@ export class MenuPickerComponent implements OnInit {
   }
 
   Order(): void {
-
-    const stringData = this.PrepareData()
+    const data: { [key: string]: { [nestedKey: string]: number } } = {};
+    for (let section in this.Choices) {
+      data[section] = {}
+      for (let choice in this.Choices[section]) {
+        if (this.Choices[section][choice].Amount > 0) {
+          data[section][this.Choices[section][choice].Name] = this.Choices[section][choice].Amount
+        }
+      }
+    }
+    const stringData = JSON.stringify({ code: this.code, choices: data })
     try {
       console.log(stringData)
       window.Telegram.WebApp.sendData(stringData)
