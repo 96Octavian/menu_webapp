@@ -105,7 +105,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    window.Telegram.WebApp.ready()
     this.fetchMenu()
   }
 }
