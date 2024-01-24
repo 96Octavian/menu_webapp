@@ -47,7 +47,7 @@ export class MenuPickerComponent implements OnInit {
     for (let section in this.menu) {
       this.choices[section] = this.menu[section].map(meal => new Choice(meal))
     }
-    window.Telegram.WebApp.MainButton.setParams({ 'text': 'Send order', 'is_active': true, 'is_visible': true }).onClick(this.Order())
+    window.Telegram.WebApp.MainButton.setParams({ 'text': 'Send order', 'is_active': true, 'is_visible': true }).onClick(this.Order)
     window.Telegram.WebApp.ready()
   }
 
@@ -79,7 +79,7 @@ export class MenuPickerComponent implements OnInit {
 
     try {
       console.log(data)
-      window.Telegram.WebApp.sendData(data)
+      window.Telegram.WebApp.sendData(stringData)
       this.sent = true
       window.Telegram.WebApp.close()
       // window.Telegram.WebApp.showAlert(data, window.Telegram.WebApp.close())
