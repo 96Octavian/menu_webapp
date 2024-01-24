@@ -44,11 +44,10 @@ export class MenuPickerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    window.Telegram.WebApp.ready()
     for (let section in this.menu) {
       this.choices[section] = this.menu[section].map(meal => new Choice(meal))
     }
-    console.log(this.choices)
+    window.Telegram.WebApp.MainButton.setParams({'text': 'Send order', 'is_active': true, 'is_visible': true}).onClick(this.Order)
   }
 
   Order(): void {

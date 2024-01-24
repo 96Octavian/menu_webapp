@@ -1,6 +1,6 @@
 <div class="flex items-center justify-center my-8 mx-4">
-    <app-not-telegram *ngIf="!IsTelegram"></app-not-telegram>
-    <div *ngIf="IsTelegram">
+    <app-not-telegram *ngIf="!ValidPlatform"></app-not-telegram>
+    <div *ngIf="ValidPlatform">
         <app-loading-fulscreen *ngIf="Loading"></app-loading-fulscreen>
         <div *ngIf="!Loading">
             <app-code-not-found *ngIf="!ValidCode"></app-code-not-found>

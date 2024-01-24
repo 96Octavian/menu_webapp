@@ -44,8 +44,13 @@ export class AppComponent implements OnInit {
   public get Menu(): Menu {
     return this.menu
   }
+  public UserAgent: string = window.navigator.userAgent
 
-  public IsTelegram: boolean = window.Telegram.WebApp.initData.length > 0
+  public Version: string = window.Telegram.WebApp.version
+
+  public Platform: string = window.Telegram.WebApp.platform
+
+  public ValidPlatform: boolean = this.Platform !== 'unknown'
 
   public Loading: boolean = false
 
@@ -56,8 +61,8 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   private fetchMenu(): void {
-    if (!this.IsTelegram) {
-      console.log('Not fetching menu because IsTelegram == false')
+    if (!this.ValidPlatform) {
+      console.log('Not fetching menu because this is not a valid platform')
       return
     }
 
@@ -100,6 +105,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.Telegram.WebApp.ready()
     this.fetchMenu()
   }
 }
