@@ -47,11 +47,11 @@ export class MenuPickerComponent implements OnInit {
     for (let section in this.menu) {
       this.choices[section] = this.menu[section].map(meal => new Choice(meal))
     }
-    window.Telegram.WebApp.MainButton.setParams({ 'text': 'Send order', 'is_active': true, 'is_visible': true }).onClick(this.Order)
+    // window.Telegram.WebApp.MainButton.setParams({ 'text': 'Send order', 'is_active': true, 'is_visible': true }).onClick(this.Order)
     window.Telegram.WebApp.ready()
   }
 
-  PrepareData(): string {
+  private PrepareData(): string {
     const data: { [key: string]: { [nestedKey: string]: number } } = {};
     for (let section in this.Choices) {
       data[section] = {}
@@ -64,22 +64,8 @@ export class MenuPickerComponent implements OnInit {
     return JSON.stringify({ code: this.code, choices: data })
   }
 
-  ShowRecap(): void{
-    const stringData = this.PrepareData()
-    window.Telegram.WebApp.showAlert(stringData)
-  }
-
   Order(): void {
-    const data: { [key: string]: { [nestedKey: string]: number } } = {};
-    for (let section in this.Choices) {
-      data[section] = {}
-      for (let choice in this.Choices[section]) {
-        if (this.Choices[section][choice].Amount > 0) {
-          data[section][this.Choices[section][choice].Name] = this.Choices[section][choice].Amount
-        }
-      }
-    }
-    const stringData = JSON.stringify({ code: this.code, choices: data })
+    const stringData = this.PrepareData()
     try {
       console.log(stringData)
       window.Telegram.WebApp.sendData(stringData)
