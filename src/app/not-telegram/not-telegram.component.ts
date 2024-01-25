@@ -8,5 +8,11 @@ import { Component, Input } from '@angular/core';
 export class NotTelegramComponent {
 
   @Input({ required: true }) Platform!: string;
-  
+  LogoClicked: boolean = true
+  SecondClick: boolean = false
+
+  LogoClick(): void {
+    this.SecondClick = true
+    this.LogoClicked = !this.LogoClicked
+  }
 }
