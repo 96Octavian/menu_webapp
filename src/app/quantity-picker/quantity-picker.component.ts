@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Choice } from '../menu-picker/menu-picker.component';
 
 @Component({
@@ -9,6 +9,7 @@ import { Choice } from '../menu-picker/menu-picker.component';
 export class QuantityPickerComponent {
 
   @Input({ required: true }) choice!: Choice;
+  @Output() AmountChanged: EventEmitter<void> = new EventEmitter()
 
   public get CanDecrement(): boolean {
     return this.choice.Amount > 0
@@ -16,11 +17,15 @@ export class QuantityPickerComponent {
 
   public Increment(): void {
     this.choice.Increment()
+    this.AmountChanged.emit()
     // console.log(this.choice.Name + ": " + this.choice.Amount)
   }
 
   public Decrement(): void {
-    this.choice.Decrement()
+    if (this.choice.Amount > 0) {
+      this.choice.Decrement()
+      this.AmountChanged.emit()
+    }
     // console.log(this.choice.Name + ": " + this.choice.Amount)
   }
 }
