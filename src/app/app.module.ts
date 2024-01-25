@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoadingFulscreenComponent } from './loading-fulscreen/loading-fulscreen.component';
 import { MenuPickerComponent } from './menu-picker/menu-picker.component';
 import { QuantityPickerComponent } from './quantity-picker/quantity-picker.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { QuantityPickerComponent } from './quantity-picker/quantity-picker.compo
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

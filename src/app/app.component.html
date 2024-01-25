@@ -3,7 +3,7 @@
     <div *ngIf="ValidPlatform">
         <app-loading-fulscreen *ngIf="Loading"></app-loading-fulscreen>
         <div *ngIf="!Loading">
-            <app-code-not-found *ngIf="!ValidCode"></app-code-not-found>
+            <app-code-not-found *ngIf="!ValidCode" (codeAdded)="CodeAdded($event)"></app-code-not-found>
             <app-menu-picker *ngIf="ValidCode" [menu]="Menu" [code]="Code"></app-menu-picker>
         </div>
     </div>

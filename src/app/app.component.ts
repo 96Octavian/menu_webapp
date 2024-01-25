@@ -17,44 +17,48 @@ declare global {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   private code: string = new URLSearchParams(window.location.search).has('code') ? new URLSearchParams(window.location.search).get('code') ?? "" : ""
-  public get Code(): string {
+  get Code(): string {
     return this.code
+  }
+  set Code(value: string) {
+    this.code = value
   }
 
   private apiUrl: string = "https://getpantry.cloud/apiv1/pantry/17474c8e-ea5a-4857-a468-744bad4d466b/basket/"
 
-  // private menu: Menu = {}
-  private menu: Menu = {
-    "primi": [
-      "pasta con le cotiche",
-      "pasta senza le cotiche"
-    ],
-    "secondi": [
-      "pollo fritto",
-      "pollo lesso",
-      "pollo ai ferri",
-      "pollo al burro"
-    ],
-    "contorni": [
-      "patatine",
-      "patatine ma diverse"
-    ]
-  }
-  public get Menu(): Menu {
+  private menu: Menu = {}
+  // private menu: Menu = {
+  //   "primi": [
+  //     "pasta con le cotiche",
+  //     "pasta senza le cotiche"
+  //   ],
+  //   "secondi": [
+  //     "pollo fritto",
+  //     "pollo lesso",
+  //     "pollo ai ferri",
+  //     "pollo al burro"
+  //   ],
+  //   "contorni": [
+  //     "patatine",
+  //     "patatine ma diverse"
+  //   ]
+  // }
+  get Menu(): Menu {
     return this.menu
   }
-  public UserAgent: string = window.navigator.userAgent
+  UserAgent: string = window.navigator.userAgent
 
-  public Version: string = window.Telegram.WebApp.version
+  Version: string = window.Telegram.WebApp.version
 
-  public Platform: string = window.Telegram.WebApp.platform
+  Platform: string = window.Telegram.WebApp.platform
 
-  public ValidPlatform: boolean = this.Platform !== 'unknown'
+  ValidPlatform: boolean = true //this.Platform !== 'unknown'
 
-  public Loading: boolean = false
+  Loading: boolean = false
 
-  public get ValidCode(): boolean {
+  get ValidCode(): boolean {
     return Object.keys(this.menu).length > 0;
   }
 
@@ -75,6 +79,7 @@ export class AppComponent implements OnInit {
       console.log("Already have a menu")
       return
     }
+
     console.log('Fetching menu...')
 
     this.Loading = true
@@ -86,6 +91,8 @@ export class AppComponent implements OnInit {
       },
       error: (error) => {
         this.Loading = false
+        this.code = ''
+        this.menu = {}
         // Handle error response
         if (error.error instanceof ErrorEvent) {
           // Client-side error
@@ -102,6 +109,11 @@ export class AppComponent implements OnInit {
         console.info('Done fetching menu')
       }
     });
+  }
+
+  CodeAdded(code: string): void {
+    this.code = code
+    this.fetchMenu()
   }
 
   ngOnInit() {
