@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
 
   Platform: string = window.Telegram.WebApp.platform
 
-  ValidPlatform: boolean = true //this.Platform !== 'unknown'
+  ValidPlatform: boolean = this.Platform !== 'unknown'
 
   Loading: boolean = false
 
